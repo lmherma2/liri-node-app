@@ -29,22 +29,22 @@ var spotify = new Spotify(keys.spotify);
        doThis(name);
     }
  function doThis (nam){
-        var dataArr = [];
         fs.readFile("random.txt", "utf8", function(error, data) {
             if (error) {
                 return console.log(error);
               }
-              dataArr = data.split(",")
+             var dataArr = data.split(",")
+              if (dataArr[0]=== "my-tweets") {
+                tweet(dataArr[1]);
+              }
+              if (dataArr[0] === "spotify-this-song") {
+                  console.log("works")
+                song(dataArr[1]);
+              }
+              if (dataArr[0] === "movie-this") {
+                  movie(dataArr[1]);
+            }
       });
-      if (dataArr[0] === "my-tweets") {
-        tweet(dataArr[1]);
-      }
-      if (dataArr[0] === "spotify-this-song") {
-        song(dataArr[1]);
-      }
-      if (dataArr[0] === "movie-this") {
-          movie(dataArr[1]);
-    }
     }
     function movie (nam) {
         if (nam === ""){
